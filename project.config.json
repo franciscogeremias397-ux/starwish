@@ -1,0 +1,70 @@
+{
+  "description": "银河回信微信小程序",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "file",
+        "value": "preview-qrcode.png"
+      },
+      {
+        "type": "file",
+        "value": "preview-info.json"
+      },
+      {
+        "type": "file",
+        "value": "current-devtools-screen.png"
+      },
+      {
+        "type": "file",
+        "value": "current-mini-preview.png"
+      },
+      {
+        "type": "file",
+        "value": "星空银河需求文档.md"
+      }
+    ]
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "latest",
+  "appid": "wxd40f652b8de341da",
+  "projectname": "银河回信",
+  "miniprogramRoot": "./",
+  "condition": {}
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "star-modal": "/components/star-modal/star-modal"
+  },
+  "navigationStyle": "custom"
+}

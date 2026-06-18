@@ -1,0 +1,655 @@
+.index-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #01030a;
+}
+
+.sky-field {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #01030a;
+}
+
+.sky-field::before {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 48% 30%, rgba(255, 255, 255, 0.025), transparent 30%),
+    radial-gradient(circle at 50% 72%, rgba(8, 24, 58, 0.18), transparent 40%),
+    linear-gradient(180deg, rgba(0, 2, 10, 0.12), transparent 32%, rgba(0, 3, 12, 0.40) 100%);
+  content: '';
+  pointer-events: none;
+}
+
+.sky-map {
+  position: absolute;
+  left: -4vw;
+  top: -3vh;
+  width: 108vw;
+  height: 106vh;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.galaxy-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(3vw, 0, 0) scale(1.02);
+  transform-origin: 50% 50%;
+}
+
+.sky-vignette {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 52% 44%, transparent 0%, transparent 48%, rgba(1, 3, 12, 0.34) 84%, rgba(1, 3, 12, 0.72) 100%),
+    linear-gradient(180deg, rgba(1, 3, 12, 0.10), transparent 24%, rgba(1, 3, 12, 0.30));
+  pointer-events: none;
+}
+
+.wish-star {
+  position: absolute;
+  z-index: 5;
+  width: 84rpx;
+  height: 84rpx;
+  margin-left: -42rpx;
+  margin-top: -42rpx;
+  border-radius: 50%;
+}
+
+.wish-star::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10rpx;
+  height: 10rpx;
+  margin-left: -5rpx;
+  margin-top: -5rpx;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow:
+    0 0 10rpx rgba(255, 255, 255, 0.95),
+    0 0 24rpx currentColor,
+    0 0 54rpx currentColor;
+  content: '';
+  animation: wishPulse 4.4s ease-in-out infinite;
+}
+
+.wish-star::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: -35rpx;
+  margin-top: -35rpx;
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 0%, transparent 45%, rgba(255, 255, 255, 0.58) 50%, transparent 55%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, transparent 45%, rgba(255, 255, 255, 0.48) 50%, transparent 55%, transparent 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.46) 0%, rgba(255, 232, 180, 0.22) 18%, rgba(157, 187, 255, 0.12) 38%, transparent 68%);
+  box-shadow:
+    0 0 28rpx rgba(255, 232, 180, 0.28),
+    0 0 58rpx rgba(157, 187, 255, 0.20);
+  content: '';
+  opacity: 0.58;
+  transform: rotate(45deg);
+  animation: wishHalo 4.4s ease-in-out infinite;
+}
+
+.wish-star.is-mine::before {
+  width: 14rpx;
+  height: 14rpx;
+  margin-left: -7rpx;
+  margin-top: -7rpx;
+  box-shadow:
+    0 0 12rpx rgba(255, 255, 255, 1),
+    0 0 32rpx currentColor,
+    0 0 82rpx currentColor,
+    0 0 118rpx rgba(255, 229, 172, 0.42);
+}
+
+.wish-star.is-mine::after {
+  width: 82rpx;
+  height: 82rpx;
+  margin-left: -41rpx;
+  margin-top: -41rpx;
+  opacity: 0.48;
+}
+
+.meteor {
+  position: fixed;
+  z-index: 16;
+  width: 390rpx;
+  height: 120rpx;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.meteor-tail {
+  position: absolute;
+  right: 40rpx;
+  top: 52rpx;
+  width: 310rpx;
+  height: 8rpx;
+  border-radius: 999rpx;
+  transform-origin: 100% 50%;
+}
+
+.tail-main {
+  background: linear-gradient(90deg, transparent, rgba(150, 184, 255, 0.16) 34%, rgba(246, 250, 255, 0.92));
+  box-shadow:
+    0 0 18rpx rgba(157, 187, 255, 0.58),
+    0 0 58rpx rgba(255, 228, 174, 0.24);
+}
+
+.tail-bloom {
+  top: 45rpx;
+  height: 22rpx;
+  background: linear-gradient(90deg, transparent, rgba(125, 158, 255, 0.05) 28%, rgba(255, 238, 201, 0.22));
+  filter: blur(8rpx);
+}
+
+.meteor-core {
+  position: absolute;
+  right: 20rpx;
+  top: 31rpx;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #fff7d8 22%, rgba(255, 226, 164, 0.48) 48%, rgba(130, 164, 255, 0.12) 72%, transparent 100%);
+  box-shadow:
+    0 0 18rpx rgba(255, 255, 255, 0.95),
+    0 0 54rpx rgba(255, 232, 174, 0.68),
+    0 0 116rpx rgba(119, 151, 255, 0.42);
+}
+
+.meteor-spark {
+  position: absolute;
+  width: 7rpx;
+  height: 7rpx;
+  border-radius: 50%;
+  background: rgba(255, 245, 218, 0.94);
+  box-shadow: 0 0 20rpx rgba(255, 230, 172, 0.72);
+  opacity: 0.8;
+}
+
+.spark-a {
+  right: 126rpx;
+  top: 34rpx;
+  animation: sparkDriftA 2s ease-out forwards;
+}
+
+.spark-b {
+  right: 182rpx;
+  top: 72rpx;
+  width: 5rpx;
+  height: 5rpx;
+  animation: sparkDriftB 2s ease-out forwards;
+}
+
+.spark-c {
+  right: 242rpx;
+  top: 47rpx;
+  width: 4rpx;
+  height: 4rpx;
+  animation: sparkDriftC 2s ease-out forwards;
+}
+
+.meteor.track-right {
+  left: 18vw;
+  top: 76vh;
+  transform-origin: 100% 50%;
+  animation: meteorRight 2.12s cubic-bezier(0.12, 0.82, 0.14, 1) forwards;
+}
+
+.meteor.track-left {
+  left: 48vw;
+  top: 78vh;
+  transform-origin: 0% 50%;
+  animation: meteorLeft 2.12s cubic-bezier(0.12, 0.82, 0.14, 1) forwards;
+}
+
+.meteor.track-left .meteor-tail {
+  left: 40rpx;
+  right: auto;
+  transform-origin: 0% 50%;
+}
+
+.meteor.track-left .tail-main {
+  background: linear-gradient(90deg, rgba(246, 250, 255, 0.92), rgba(150, 184, 255, 0.16) 66%, transparent);
+}
+
+.meteor.track-left .tail-bloom {
+  background: linear-gradient(90deg, rgba(255, 238, 201, 0.22), rgba(125, 158, 255, 0.05) 72%, transparent);
+}
+
+.meteor.track-left .meteor-core {
+  left: 20rpx;
+  right: auto;
+}
+
+.meteor.track-steep {
+  left: 34vw;
+  top: 79vh;
+  transform-origin: 100% 50%;
+  animation: meteorSteep 2.12s cubic-bezier(0.12, 0.82, 0.14, 1) forwards;
+}
+
+.top-left {
+  position: fixed;
+  z-index: 28;
+  left: 34rpx;
+  pointer-events: none;
+}
+
+.top-pill,
+.icon-button {
+  pointer-events: auto;
+}
+
+.top-pill {
+  min-width: 184rpx;
+  height: 70rpx;
+  padding: 0 28rpx;
+  border-radius: 999rpx;
+  color: rgba(252, 247, 236, 0.96);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 30rpx;
+  font-weight: 400;
+  line-height: 70rpx;
+  text-align: center;
+  text-shadow: 0 0 20rpx rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 0 36rpx rgba(157, 187, 255, 0.18),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1rpx 0 rgba(157, 187, 255, 0.10);
+}
+
+.top-actions {
+  position: fixed;
+  z-index: 28;
+  display: flex;
+  gap: 22rpx;
+  pointer-events: none;
+}
+
+.icon-button {
+  flex: 0 0 72rpx;
+  width: 72rpx;
+  height: 72rpx;
+  min-width: 72rpx;
+  max-width: 72rpx;
+  padding: 0;
+  border-radius: 50%;
+  color: rgba(248, 250, 255, 0.9);
+  font-size: 34rpx;
+  font-weight: 300;
+  line-height: 72rpx;
+  text-align: center;
+  text-shadow: 0 0 18rpx rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 0 34rpx rgba(157, 187, 255, 0.16),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1rpx 0 rgba(157, 187, 255, 0.08);
+}
+
+.hero-copy {
+  position: fixed;
+  z-index: 20;
+  left: 32rpx;
+  right: 32rpx;
+  bottom: 430rpx;
+  pointer-events: none;
+  text-align: center;
+  text-shadow:
+    0 0 18rpx rgba(255, 232, 190, 0.38),
+    0 0 64rpx rgba(157, 187, 255, 0.20);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28rpx;
+  color: rgba(255, 241, 214, 0.98);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 82rpx;
+  font-weight: 400;
+  line-height: 1.08;
+  text-shadow:
+    0 0 12rpx rgba(255, 242, 216, 0.42),
+    0 0 36rpx rgba(255, 219, 158, 0.26),
+    0 0 78rpx rgba(157, 187, 255, 0.18);
+}
+
+.title-tail {
+  display: inline-block;
+}
+
+.subtitle {
+  margin-top: 28rpx;
+  color: rgba(245, 236, 224, 0.82);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 29rpx;
+  font-weight: 300;
+  line-height: 1.45;
+  text-shadow: 0 0 24rpx rgba(255, 232, 186, 0.18);
+}
+
+.quiet-toast {
+  position: fixed;
+  z-index: 34;
+  left: 82rpx;
+  right: 82rpx;
+  bottom: 318rpx;
+  min-height: 64rpx;
+  border-radius: 999rpx;
+  color: rgba(244, 247, 255, 0.94);
+  font-size: 25rpx;
+  line-height: 64rpx;
+  text-align: center;
+}
+
+.wish-dock {
+  position: fixed;
+  z-index: 24;
+  left: 58rpx;
+  right: 58rpx;
+  bottom: calc(env(safe-area-inset-bottom) + 48rpx);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+
+.wish-dock.is-submitting {
+  opacity: 0.58;
+  transform: translateY(28rpx) scale(0.988);
+}
+
+.input-shell {
+  position: relative;
+  min-height: 168rpx;
+  overflow: hidden;
+  padding: 36rpx 42rpx 46rpx;
+  border-radius: 44rpx;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.12), transparent 38%),
+    radial-gradient(circle at 82% 110%, rgba(117, 151, 255, 0.14), transparent 42%),
+    linear-gradient(145deg, rgba(21, 33, 68, 0.54), rgba(4, 9, 25, 0.66));
+  border: 1.5rpx solid rgba(220, 229, 255, 0.38);
+  box-shadow:
+    0 22rpx 96rpx rgba(1, 5, 20, 0.66),
+    0 0 42rpx rgba(157, 187, 255, 0.16),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1rpx 0 rgba(157, 187, 255, 0.14);
+  backdrop-filter: blur(28rpx);
+}
+
+.input-shell::before {
+  position: absolute;
+  left: 40rpx;
+  right: 40rpx;
+  top: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, rgba(244, 247, 255, 0.58), transparent);
+  content: '';
+}
+
+.input-shell::after {
+  position: absolute;
+  left: -80rpx;
+  right: -80rpx;
+  bottom: -72rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(100, 133, 230, 0.16), transparent 68%);
+  content: '';
+  pointer-events: none;
+}
+
+.wish-input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 92rpx;
+  min-height: 92rpx;
+  color: rgba(250, 247, 242, 0.94);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 31rpx;
+  font-weight: 300;
+  line-height: 1.5;
+  text-shadow: 0 0 18rpx rgba(157, 187, 255, 0.14);
+}
+
+.wish-placeholder {
+  color: rgba(230, 224, 224, 0.52);
+}
+
+.counter {
+  position: absolute;
+  z-index: 1;
+  right: 34rpx;
+  bottom: 25rpx;
+  color: rgba(225, 220, 220, 0.62);
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.counter.is-full {
+  color: rgba(255, 232, 163, 0.9);
+}
+
+.ascend-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 78rpx;
+  width: 432rpx;
+  height: 106rpx;
+  margin: 36rpx auto 0;
+  overflow: visible;
+  border-radius: 999rpx;
+  color: rgba(255, 240, 210, 0.99);
+  font-family: "Songti SC", "STSong", "SimSun", serif;
+  font-size: 42rpx;
+  font-weight: 400;
+  line-height: 106rpx;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.20), transparent 43%),
+    linear-gradient(105deg, rgba(18, 31, 67, 0.82), rgba(33, 43, 92, 0.72) 52%, rgba(20, 28, 72, 0.84));
+  border: 2rpx solid rgba(255, 220, 163, 0.88);
+  box-shadow:
+    0 0 20rpx rgba(255, 235, 194, 0.56),
+    0 0 64rpx rgba(255, 220, 163, 0.28),
+    0 0 116rpx rgba(93, 122, 255, 0.20),
+    0 20rpx 78rpx rgba(1, 5, 20, 0.66),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.36),
+    inset 0 -1rpx 0 rgba(255, 220, 163, 0.36);
+  text-shadow:
+    0 0 16rpx rgba(255, 235, 194, 0.50),
+    0 0 36rpx rgba(255, 220, 163, 0.32);
+}
+
+.ascend-button::before {
+  position: absolute;
+  left: -70rpx;
+  right: -70rpx;
+  top: 12rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  border: 1rpx solid rgba(255, 220, 163, 0.28);
+  transform: rotate(-5deg);
+  content: '';
+  pointer-events: none;
+}
+
+.ascend-button::after {
+  position: absolute;
+  left: 44rpx;
+  right: 44rpx;
+  bottom: -18rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: rgba(255, 220, 163, 0.28);
+  filter: blur(18rpx);
+  content: '';
+  pointer-events: none;
+}
+
+.button-label,
+.button-star {
+  position: relative;
+  z-index: 1;
+}
+
+.button-star {
+  color: rgba(255, 228, 180, 0.95);
+  font-size: 34rpx;
+  text-shadow:
+    0 0 14rpx rgba(255, 236, 204, 0.84),
+    0 0 40rpx rgba(255, 220, 163, 0.46);
+}
+
+.ascend-button[disabled] {
+  color: rgba(252, 254, 255, 0.76);
+  background:
+    radial-gradient(circle at 50% -30%, rgba(255, 255, 255, 0.30), transparent 34%),
+    linear-gradient(135deg, rgba(106, 114, 192, 0.46), rgba(70, 100, 176, 0.40));
+}
+
+@keyframes wishPulse {
+  0%,
+  100% {
+    opacity: 0.88;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes wishHalo {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: rotate(45deg) scale(0.82);
+  }
+  50% {
+    opacity: 0.42;
+    transform: rotate(45deg) scale(1.18);
+  }
+}
+
+@keyframes meteorRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(-38rpx, 26rpx, 0) rotate(-35deg) scaleX(0.16);
+  }
+  8% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(218rpx, -520rpx, 0) rotate(-35deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(300rpx, -650rpx, 0) rotate(-35deg) scaleX(0.22);
+  }
+}
+
+@keyframes meteorLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(42rpx, 30rpx, 0) rotate(34deg) scaleX(0.16);
+  }
+  8% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(-228rpx, -536rpx, 0) rotate(34deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-310rpx, -668rpx, 0) rotate(34deg) scaleX(0.22);
+  }
+}
+
+@keyframes meteorSteep {
+  0% {
+    opacity: 0;
+    transform: translate3d(-20rpx, 34rpx, 0) rotate(-58deg) scaleX(0.16);
+  }
+  8% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(120rpx, -594rpx, 0) rotate(-58deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(168rpx, -730rpx, 0) rotate(-58deg) scaleX(0.22);
+  }
+}
+
+@keyframes sparkDriftA {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+  18% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-76rpx, 22rpx, 0) scale(0.9);
+  }
+}
+
+@keyframes sparkDriftB {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+  24% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-62rpx, -18rpx, 0) scale(0.8);
+  }
+}
+
+@keyframes sparkDriftC {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4);
+  }
+  30% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-44rpx, 18rpx, 0) scale(0.72);
+  }
+}

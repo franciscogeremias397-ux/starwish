@@ -1,0 +1,40 @@
+<view class="stars-page">
+  <view class="sky-layer">
+    <view class="mist mist-a"></view>
+    <view class="mist mist-b"></view>
+  </view>
+
+  <view class="page-nav">
+    <button class="back-btn glass" bindtap="goBack">‹</button>
+    <text class="nav-title">我的星星</text>
+  </view>
+
+  <view class="summary">
+    <view class="summary-title">你已经把 {{myStars.length}} 句话留在银河里</view>
+    <view class="summary-subtitle">它们会以心愿星的样子，在公共星空里安静闪烁。</view>
+  </view>
+
+  <view wx:if="{{myStars.length}}" class="star-list">
+    <view
+      wx:for="{{myStars}}"
+      wx:key="id"
+      class="star-row glass"
+      bindtap="openStar"
+      data-id="{{item.id}}"
+    >
+      <view class="row-glow" style="background: {{item.color}}; color: {{item.color}};"></view>
+      <view class="row-main">
+        <text class="row-date">{{item.createdDate}}</text>
+        <text class="row-content">{{item.contentPreview}}</text>
+        <text class="row-no">{{item.starNo}}</text>
+      </view>
+      <button class="delete-btn" catchtap="confirmDelete" data-id="{{item.id}}">删除</button>
+    </view>
+  </view>
+
+  <view wx:else class="empty-state glass">
+    <view class="empty-star"></view>
+    <view class="empty-title">你还没有把心事留在银河里。</view>
+    <button class="write-btn" bindtap="goWrite">去写一句</button>
+  </view>
+</view>

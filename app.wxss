@@ -1,0 +1,35 @@
+page {
+  min-height: 100%;
+  color: #f4f7ff;
+  background: #02030a;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+}
+
+view,
+text,
+textarea,
+button {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  line-height: normal;
+  background: transparent;
+}
+
+button::after {
+  border: 0;
+}
+
+.glass {
+  background: linear-gradient(145deg, rgba(17, 25, 54, 0.5), rgba(8, 13, 32, 0.34));
+  border: 1rpx solid rgba(196, 214, 255, 0.18);
+  box-shadow:
+    0 18rpx 80rpx rgba(2, 7, 28, 0.48),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24rpx);
+}

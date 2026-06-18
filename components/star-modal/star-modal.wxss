@@ -1,0 +1,115 @@
+.modal-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 52rpx;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(157, 187, 255, 0.08), transparent 46%),
+    rgba(2, 4, 14, 0.3);
+  backdrop-filter: blur(6rpx);
+}
+
+.star-modal {
+  position: relative;
+  width: 100%;
+  max-width: 650rpx;
+  overflow: hidden;
+  padding: 38rpx 36rpx 34rpx;
+  border-radius: 32rpx;
+  color: #f4f7ff;
+  background:
+    radial-gradient(circle at 82% 0%, rgba(255, 232, 163, 0.1), transparent 36%),
+    linear-gradient(145deg, rgba(14, 22, 50, 0.68), rgba(5, 9, 25, 0.5));
+  border-color: rgba(202, 221, 255, 0.18);
+  box-shadow:
+    0 28rpx 110rpx rgba(1, 4, 18, 0.66),
+    0 0 70rpx rgba(108, 99, 255, 0.16),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.14);
+}
+
+.star-modal::before {
+  position: absolute;
+  left: 42rpx;
+  right: 42rpx;
+  top: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, rgba(244, 247, 255, 0.48), transparent);
+  content: '';
+}
+
+.modal-orbit {
+  position: absolute;
+  right: -80rpx;
+  top: -100rpx;
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 232, 163, 0.18) 0%, rgba(157, 187, 255, 0.07) 44%, rgba(108, 99, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.modal-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.modal-kicker {
+  color: rgba(219, 229, 255, 0.66);
+  font-size: 24rpx;
+  line-height: 1.45;
+}
+
+.close-btn {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  color: rgba(244, 247, 255, 0.72);
+  font-size: 40rpx;
+  line-height: 42rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1rpx 0 rgba(255, 255, 255, 0.12);
+}
+
+.star-no {
+  position: relative;
+  z-index: 1;
+  margin-top: 22rpx;
+  color: #ffe8a3;
+  font-size: 26rpx;
+  text-shadow: 0 0 20rpx rgba(255, 232, 163, 0.28);
+}
+
+.wish-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 28rpx;
+  color: rgba(252, 254, 255, 0.96);
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 1.72;
+  text-shadow: 0 0 26rpx rgba(157, 187, 255, 0.12);
+}
+
+.meta-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16rpx;
+  margin-top: 34rpx;
+  color: rgba(202, 216, 255, 0.62);
+  font-size: 23rpx;
+  line-height: 1.4;
+}

@@ -1,0 +1,24 @@
+<view class="detail-page">
+  <view class="stars-noise"></view>
+
+  <view class="page-nav">
+    <button class="back-btn glass" bindtap="goBack">‹</button>
+  </view>
+
+  <view wx:if="{{star}}" class="detail-card glass">
+    <view class="star-glow" style="background: {{star.color}}; color: {{star.color}};"></view>
+    <view class="detail-kicker">这颗星，收藏了一句话</view>
+    <view class="detail-no">{{star.starNo}}</view>
+    <view class="detail-content">“{{star.content}}”</view>
+    <view class="detail-meta">
+      <text>来自：{{star.ipRegion}}</text>
+      <text>{{star.createdDate}}</text>
+    </view>
+    <button class="return-btn" bindtap="goHome">回到星空</button>
+  </view>
+
+  <view wx:else class="detail-card glass">
+    <view class="detail-kicker">这颗星暂时听不清。</view>
+    <button class="return-btn" bindtap="goHome">回到星空</button>
+  </view>
+</view>

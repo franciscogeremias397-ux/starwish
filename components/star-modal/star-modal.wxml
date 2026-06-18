@@ -1,0 +1,15 @@
+<view wx:if="{{show}}" class="modal-mask" bindtap="onClose">
+  <view class="star-modal glass" catchtap="noop">
+    <view class="modal-orbit"></view>
+    <view class="modal-head">
+      <text class="modal-kicker">你听见了一颗星的心事。</text>
+      <button class="close-btn" bindtap="onClose" aria-label="关闭">×</button>
+    </view>
+    <view class="star-no">{{star.starNo}}</view>
+    <view class="wish-content">“{{star.content}}”</view>
+    <view class="meta-row">
+      <text>来自：{{star.ipRegion}}</text>
+      <text>{{star.createdDate}}</text>
+    </view>
+  </view>
+</view>

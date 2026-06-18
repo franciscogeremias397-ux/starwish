@@ -1,0 +1,133 @@
+.settings-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: calc(env(safe-area-inset-top) + 28rpx) 28rpx calc(env(safe-area-inset-bottom) + 44rpx);
+  background:
+    radial-gradient(circle at 80% 90%, rgba(255, 214, 241, 0.075), transparent 38%),
+    radial-gradient(circle at 20% 14%, rgba(108, 99, 255, 0.14), transparent 48%),
+    linear-gradient(180deg, #02030a 0%, #070b19 50%, #101a38 100%);
+  color: #f4f7ff;
+}
+
+.settings-stars {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 14% 24%, rgba(244, 247, 255, 0.44) 0 1rpx, transparent 2rpx),
+    radial-gradient(circle at 88% 18%, rgba(157, 187, 255, 0.42) 0 1rpx, transparent 2rpx),
+    radial-gradient(circle at 36% 72%, rgba(255, 214, 241, 0.3) 0 1rpx, transparent 2rpx);
+  background-size: 230rpx 260rpx;
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.settings-stars::after {
+  position: absolute;
+  left: -180rpx;
+  right: -180rpx;
+  top: 220rpx;
+  height: 520rpx;
+  transform: rotate(-22deg);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(244, 247, 255, 0.11), rgba(157, 187, 255, 0.065) 34%, rgba(184, 167, 255, 0.034) 52%, transparent 72%),
+    radial-gradient(ellipse at 48% 52%, rgba(255, 214, 241, 0.075), transparent 62%);
+  content: '';
+}
+
+.page-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  height: 68rpx;
+}
+
+.back-btn {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  color: rgba(244, 247, 255, 0.88);
+  font-size: 46rpx;
+  line-height: 56rpx;
+  text-align: center;
+}
+
+.nav-title {
+  margin-left: 20rpx;
+  color: rgba(250, 253, 255, 0.96);
+  font-size: 34rpx;
+  font-weight: 500;
+}
+
+.settings-panel {
+  position: relative;
+  z-index: 2;
+  margin-top: 80rpx;
+  padding: 34rpx;
+  border-radius: 32rpx;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(255, 232, 163, 0.09), transparent 34%),
+    linear-gradient(145deg, rgba(18, 28, 62, 0.52), rgba(6, 10, 27, 0.42));
+  border-color: rgba(202, 221, 255, 0.18);
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.setting-title {
+  color: rgba(250, 253, 255, 0.94);
+  font-size: 30rpx;
+  line-height: 1.4;
+}
+
+.setting-note,
+.about-text {
+  margin-top: 8rpx;
+  color: rgba(202, 216, 255, 0.56);
+  font-size: 24rpx;
+  line-height: 1.55;
+}
+
+.divider {
+  height: 1rpx;
+  margin: 34rpx 0;
+  background: rgba(164, 188, 255, 0.14);
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14rpx;
+  margin-top: 24rpx;
+  padding: 8rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1rpx 0 rgba(255, 255, 255, 0.08);
+}
+
+.seg-btn {
+  height: 62rpx;
+  border-radius: 999rpx;
+  color: rgba(214, 226, 255, 0.72);
+  font-size: 25rpx;
+  line-height: 62rpx;
+  text-align: center;
+}
+
+.seg-btn.is-active {
+  color: #fcfeff;
+  background:
+    radial-gradient(circle at 50% -30%, rgba(255, 255, 255, 0.48), transparent 34%),
+    linear-gradient(135deg, rgba(255, 232, 163, 0.44), rgba(157, 187, 255, 0.48), rgba(108, 99, 255, 0.42));
+  box-shadow:
+    0 0 20rpx rgba(255, 232, 163, 0.16),
+    0 0 30rpx rgba(157, 187, 255, 0.2);
+}

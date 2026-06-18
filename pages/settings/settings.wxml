@@ -1,0 +1,35 @@
+<view class="settings-page">
+  <view class="settings-stars"></view>
+
+  <view class="page-nav">
+    <button class="back-btn glass" bindtap="goBack">‹</button>
+    <text class="nav-title">设置</text>
+  </view>
+
+  <view class="settings-panel glass">
+    <view class="setting-row">
+      <view>
+        <view class="setting-title">背景音乐</view>
+        <view class="setting-note">安静、神秘、治愈的星空氛围</view>
+      </view>
+      <switch checked="{{musicEnabled}}" color="#9DBBFF" bindchange="onMusicChange" />
+    </view>
+
+    <view class="divider"></view>
+
+    <view class="setting-block">
+      <view class="setting-title">动效强度</view>
+      <view class="segmented">
+        <button class="seg-btn {{animationLevel === 'soft' ? 'is-active' : ''}}" data-value="soft" bindtap="setAnimationLevel">柔和</button>
+        <button class="seg-btn {{animationLevel === 'standard' ? 'is-active' : ''}}" data-value="standard" bindtap="setAnimationLevel">标准</button>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <view class="about-block">
+      <view class="setting-title">关于银河回信</view>
+      <view class="about-text">用户在一片可以探索的银河里，偶然听见别人的心事，也把自己的心愿留在夜空中。</view>
+    </view>
+  </view>
+</view>

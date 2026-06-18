@@ -1,0 +1,26 @@
+.DS_Store
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+coverage/
+.env
+.env.*
+*.local
+*.log
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# WeChat Mini Program generated files
+miniprogram_npm/
+unpackage/
+.idea/
+
+# Local preview/debug artifacts
+preview-qrcode.png
+preview-info.json
+current-devtools-screen.png
+current-mini-preview.png

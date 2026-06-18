@@ -1,0 +1,73 @@
+<view class="index-page">
+  <view
+    class="sky-field"
+    bindtouchstart="onSkyTouchStart"
+    bindtouchmove="onSkyTouchMove"
+    bindtouchend="onSkyTouchEnd"
+    bindtouchcancel="onSkyTouchEnd"
+  >
+    <view class="sky-map" style="{{mapStyle}}">
+      <image class="galaxy-image" src="/assets/images/galaxy-home.jpg" mode="aspectFill" />
+      <view class="sky-vignette"></view>
+      <view
+        wx:for="{{renderStars}}"
+        wx:key="id"
+        class="wish-star {{item.isMine ? 'is-mine' : ''}}"
+        style="left: {{item.xPct}}%; top: {{item.yPct}}%; color: {{item.color}};"
+        data-id="{{item.id}}"
+        catchtap="onStarTap"
+      ></view>
+    </view>
+  </view>
+
+  <view wx:if="{{meteorVisible}}" class="meteor {{meteorClass}}">
+    <view class="meteor-tail tail-main"></view>
+    <view class="meteor-tail tail-bloom"></view>
+    <view class="meteor-core"></view>
+    <view class="meteor-spark spark-a"></view>
+    <view class="meteor-spark spark-b"></view>
+    <view class="meteor-spark spark-c"></view>
+  </view>
+
+  <view class="top-left" style="top: {{topLeftTop}}rpx;">
+    <button class="top-pill glass" hover-class="none" bindtap="goMyStars">我的星星 ✦</button>
+  </view>
+  <view class="top-actions" style="top: {{topActionsTop}}rpx; right: {{topActionsRight}}rpx;">
+    <button class="icon-button glass" hover-class="none" bindtap="toggleMusic" aria-label="音乐">{{musicEnabled ? '♪' : '∿'}}</button>
+    <button class="icon-button glass" hover-class="none" bindtap="goSettings" aria-label="设置">⚙</button>
+  </view>
+
+  <view class="hero-copy">
+    <view class="title">
+      <text>仰望星空</text>
+      <text class="title-tail">银河回响</text>
+    </view>
+    <view class="subtitle">每一句心愿，都会化作一颗闪亮的星。</view>
+  </view>
+
+  <view wx:if="{{toastText}}" class="quiet-toast glass">{{toastText}}</view>
+
+  <view class="wish-dock {{isSubmitting ? 'is-submitting' : ''}}">
+    <view class="input-shell glass">
+      <textarea
+        class="wish-input"
+        value="{{wishText}}"
+        placeholder="写下心愿、烦恼、心事、Anything......"
+        placeholder-class="wish-placeholder"
+        maxlength="{{maxLength}}"
+        auto-height="{{false}}"
+        cursor-spacing="24"
+        bindinput="onWishInput"
+        disabled="{{isSubmitting}}"
+      />
+      <view class="counter {{wishText.length >= maxLength ? 'is-full' : ''}}">{{wishText.length}}/{{maxLength}}</view>
+    </view>
+    <button class="ascend-button" hover-class="none" bindtap="submitWish" disabled="{{isSubmitting}}">
+      <text class="button-star">✦</text>
+      <text class="button-label">{{isSubmitting ? '飞升中……' : '飞 升'}}</text>
+      <text class="button-star">✦</text>
+    </button>
+  </view>
+
+  <star-modal show="{{showStarModal}}" star="{{selectedStar}}" bindclose="closeStarModal" />
+</view>

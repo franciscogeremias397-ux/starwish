@@ -1,0 +1,9 @@
+<canvas
+  id="starCanvas"
+  type="2d"
+  class="star-canvas"
+  bindtouchstart="onTouchStart"
+  bindtouchmove="onTouchMove"
+  bindtouchend="onTouchEnd"
+  bindtouchcancel="onTouchEnd"
+></canvas>
