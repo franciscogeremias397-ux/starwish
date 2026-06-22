@@ -43,7 +43,7 @@ Page({
     mapStyle: 'transform: translate3d(0px, 0px, 0) scale(1);',
     meteorVisible: false,
     meteorClass: 'track-right',
-    topLeftTop: 78,
+    topLeftTop: 82,
     topActionsTop: 118,
     topActionsRight: 32
   },
@@ -53,6 +53,7 @@ Page({
     this.meteorTimer = null;
     this.mapOffset = { x: 0, y: 0 };
     this.mapScale = 1;
+    this.dragBounds = { x: 120, y: 170 };
     this.touchState = null;
     this.setupNavigationChrome();
     this.syncStars();
@@ -67,19 +68,28 @@ Page({
       const windowInfo = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync();
       const menuButton = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null;
       const pxToRpx = 750 / windowInfo.windowWidth;
+      this.dragBounds = {
+        x: Math.round(windowInfo.windowWidth * 0.36),
+        y: Math.round(windowInfo.windowHeight * 0.25)
+      };
 
       if (!menuButton) {
+        this.setData({
+          topLeftTop: 82,
+          topActionsTop: 112,
+          topActionsRight: 32
+        });
         return;
       }
 
       this.setData({
-        topLeftTop: Math.max(78, Math.round(menuButton.top * pxToRpx + 8)),
+        topLeftTop: 82,
         topActionsTop: Math.max(112, Math.round(menuButton.bottom * pxToRpx + 18)),
         topActionsRight: 32
       });
     } catch (error) {
       this.setData({
-        topLeftTop: 78,
+        topLeftTop: 82,
         topActionsTop: 118,
         topActionsRight: 32
       });
@@ -312,9 +322,10 @@ Page({
 
     if (this.touchState.mode === 'pan' && touches.length === 1) {
       const touch = touches[0];
+      const bounds = this.dragBounds || { x: 120, y: 170 };
       this.mapOffset = {
-        x: clamp(this.touchState.offsetX + (touch.clientX - this.touchState.startX) * 0.38, -120, 120),
-        y: clamp(this.touchState.offsetY + (touch.clientY - this.touchState.startY) * 0.38, -150, 120)
+        x: clamp(this.touchState.offsetX + (touch.clientX - this.touchState.startX) * 0.46, -bounds.x, bounds.x),
+        y: clamp(this.touchState.offsetY + (touch.clientY - this.touchState.startY) * 0.46, -bounds.y, bounds.y)
       };
       this.updateMapStyle();
       return;
@@ -324,7 +335,8 @@ Page({
       const dx = touches[0].clientX - touches[1].clientX;
       const dy = touches[0].clientY - touches[1].clientY;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      this.mapScale = clamp(this.touchState.startScale * distance / this.touchState.startDistance, 0.86, 1.28);
+      this.mapScale = clamp(this.touchState.startScale * distance / this.touchState.startDistance, 0.94, 1.14);
+      this.mapOffset = this.clampMapOffset(this.mapOffset);
       this.updateMapStyle();
     }
   },
@@ -337,5 +349,13 @@ Page({
     this.setData({
       mapStyle: `transform: translate3d(${this.mapOffset.x}px, ${this.mapOffset.y}px, 0) scale(${this.mapScale});`
     });
+  },
+
+  clampMapOffset(offset) {
+    const bounds = this.dragBounds || { x: 120, y: 170 };
+    return {
+      x: clamp(offset.x, -bounds.x, bounds.x),
+      y: clamp(offset.y, -bounds.y, bounds.y)
+    };
   }
 });

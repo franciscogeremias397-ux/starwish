@@ -6,9 +6,9 @@
     bindtouchend="onSkyTouchEnd"
     bindtouchcancel="onSkyTouchEnd"
   >
+    <image class="galaxy-fixed" src="/assets/images/galaxy-home.jpg" mode="aspectFill" />
     <view class="sky-map" style="{{mapStyle}}">
-      <image class="galaxy-image" src="/assets/images/galaxy-home.jpg" mode="aspectFill" />
-      <view class="sky-vignette"></view>
+      <image class="galaxy-pan" src="/assets/images/galaxy-home.jpg" mode="aspectFill" />
       <view
         wx:for="{{renderStars}}"
         wx:key="id"
@@ -18,6 +18,7 @@
         catchtap="onStarTap"
       ></view>
     </view>
+    <view class="sky-vignette"></view>
   </view>
 
   <view wx:if="{{meteorVisible}}" class="meteor {{meteorClass}}">
